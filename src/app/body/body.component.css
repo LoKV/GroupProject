@@ -1,0 +1,94 @@
+
+
+ .wrapper {
+	 padding: 25px;
+	 user-select: none;
+}
+ .wrapper .title {
+	 text-align: center;
+	 margin-top: 50px;
+	 margin-bottom: 75px;
+}
+ .wrapper .box {
+	 padding: 50px;
+	 background-color: rgb(142, 140, 240);
+	 border-radius: 5px;
+}
+ .wrapper select {
+	 display: inline-block;
+	 height: 50px;
+	 border: none;
+	 user-select: none;
+}
+ .wrapper .select-from {
+	 display: flex;
+	 flex-direction: row-reverse;
+	 align-items: center;
+}
+ .wrapper .select-to {
+	 display: flex;
+	 flex-direction: row;
+	 align-items: center;
+}
+ .wrapper .icon-reverse {
+	 display: inline-flex;
+	 margin-left: 35px;
+	 background-color: red;
+	 padding: 10px;
+	 border-radius: 50px;
+	 cursor: pointer;
+	 transform: scale(0.9);
+	 transition: transform 0.15s ease-out;
+}
+ .wrapper .icon-reverse:hover {
+	 transform: scale(1.1);
+	 transition: transform 0.15s ease-in;
+}
+ .wrapper .unit-input {
+	 display: flex;
+	 align-items: center;
+	 flex-direction: column;
+	 margin-top: 50px;
+}
+ .wrapper .unit-input input {
+	 width: 100%;
+	 background-color: transparent;
+	 border: 0;
+	 outline: none;
+	 border-bottom: 1px solid rgb(3, 3, 3);
+	 text-align: center;
+	 color: black;
+}
+ .wrapper .result {
+	 margin-top: 50px;
+	 text-align: center;
+}
+ .wrapper .result .text {
+	 font-size: 40px;
+	 color: black;
+	 font-weight: bold;
+	 text-shadow: 0px 1px 0px black;
+	 word-wrap: break-word;
+}
+ @media (max-width: 768px) {
+	 .wrapper .select-from, .wrapper .select-to {
+		 margin: 25px auto;
+		 text-align: left;
+		 flex-direction: inherit;
+	}
+	 .wrapper .select-from select, .wrapper .select-to select {
+		 max-width: initial;
+	}
+}
+ @media (max-width: 350px) {
+	 .wrapper .icon-reverse {
+		 position: absolute;
+		 top: 100px;
+		 right: 15px;
+		 z-index: 100;
+	}
+	 .wrapper .unit-input {
+		 margin-top: 100px;
+	}
+}
+ 
