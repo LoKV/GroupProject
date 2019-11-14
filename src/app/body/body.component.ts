@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { IUnit, Yard, Meter, Inch } from '../../converter/index';
+import { Converter } from '../../converter/converter';
+import { UnitEnum } from '../../converter/index';
 
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.css']
 })
+
+
 export class BodyComponent implements OnInit {
+
 
   constructor() { }
 
@@ -63,7 +68,30 @@ export class BodyComponent implements OnInit {
   private restoreOptions(): IUnit[] {
     return [new Yard(), new Meter(), new Inch()];
   }
+
+  randomNumber() {
+    return (Math.ceil((Math.random() * 1000)));
+  }
+
 }
+
+
+
+
+
+
+
+
+
+
+ //functionRandom() {
+    //return (Converter.convert(this.randomNumber() , UnitEnum.Yard , UnitEnum.Inch));}
+
+
+
+
+
+
 
 
 

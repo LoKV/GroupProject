@@ -5,5 +5,6 @@ export class Converter {
     const UnitFrom = UnitFactory.getInstance(unitFrom);
     const UnitTo = UnitFactory.getInstance(unitTo);
     return value * UnitTo.weight / UnitFrom.weight;
+
   }
 }
