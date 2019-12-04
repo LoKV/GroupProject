@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IUnit, Yard, Meter, Inch } from '../../converter/index';
 
+// import { ConverterPipe } from '../shared/pipes/converter.pipe';
+
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
@@ -18,6 +20,8 @@ export class BodyComponent implements OnInit {
 
   unitsFromDD: IUnit[];
   unitsToDD: IUnit[];
+
+  // unitResult: ConverterPipe;
 
   ngOnInit() {
     this.unitsFromDD = this.restoreOptions();
@@ -63,6 +67,13 @@ export class BodyComponent implements OnInit {
   private restoreOptions(): IUnit[] {
     return [new Yard(), new Meter(), new Inch()];
   }
+
+
+  // saveToLocalStorage() {
+  //   localStorage.setItem('results', JSON.stringify(this.unitResult));
+  // }
+
+
 }
 
 
