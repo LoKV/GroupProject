@@ -20,25 +20,4 @@
                   <option [value]="selectDefaultValue" [disabled]="toDD">Select unit to</option>
                   <option *ngFor="let unit of unitsToDD" [value]="unit.code">{{unit.name}}</option>
                 </select>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="unit-input">
-                <input type="number" [(ngModel)]="UnitInput" placeholder="type units here">
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="result">
-                <p class="text">{{ UnitInput | converterPipe:fromDD:toDD:2 }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-  </div>
-</div>
+  

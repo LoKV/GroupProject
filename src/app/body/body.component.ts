@@ -69,9 +69,6 @@ export class BodyComponent implements OnInit {
   }
 
 
-  // saveToLocalStorage() {
-  //   localStorage.setItem('results', JSON.stringify(this.unitResult));
-  // }
 
 
 }
