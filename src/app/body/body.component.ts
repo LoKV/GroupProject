@@ -1,27 +1,38 @@
 import { Component, OnInit } from '@angular/core';
 import { IUnit, Yard, Meter, Inch } from '../../converter/index';
-
-// import { ConverterPipe } from '../shared/pipes/converter.pipe';
+import { Converter } from '../../converter/converter';
+import { UnitEnum } from '../../converter/index';
 
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.css']
 })
+
+
 export class BodyComponent implements OnInit {
 
-  constructor() { }
-
   readonly selectDefaultValue = -1;
-
+  NumberRandom: number;
   UnitInput: number;
   fromDD: number;
   toDD: number;
 
   unitsFromDD: IUnit[];
   unitsToDD: IUnit[];
+  converter;
 
-  // unitResult: ConverterPipe;
+  constructor() {
+   }
+
+
+  randomNumber() {
+    let rnd = (Math.ceil((Math.random() * 1000)));
+    document.getElementById('tb').value = rnd;
+    let result = Converter.convert(rnd, this.fromDD , this.toDD);
+    console.log('asdfaasd', result);
+    this.UnitInput = result;
+  }
 
   ngOnInit() {
     this.unitsFromDD = this.restoreOptions();
@@ -69,13 +80,4 @@ export class BodyComponent implements OnInit {
   }
 
 
-  // saveToLocalStorage() {
-  //   localStorage.setItem('results', JSON.stringify(this.unitResult));
-  // }
-
-
 }
-
-
-
-
