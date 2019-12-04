@@ -1,23 +1,53 @@
 
+
 <div class="container">
   <div class="row">
     <div class="col-md-12">
       <main class="wrapper">
+        <h1 class="title">Unit Converter</h1>
         <div class="box">
           <div class="row">
             <div class="col-sm-12 col-md-6">
               <div class="select-from">
-                <select class="form-control" [ngModel]="fromDD"
-                  (ngModelChange)="fromDD = parseStringToInteger($event); updateUnitsToDropDown(fromDD)">
-                  <option [value]="selectDefaultValue" [disabled]="fromDD">Select unit from</option>
-                  <option *ngFor="let unit of unitsFromDD" [value]="unit.code">{{unit.name}}</option>
-                </select>
+                <select class="form-control" [ngModel]="fromDD" (ngModelChange)="fromDD = parseStringToInteger($event); updateUnitsToDropDown(fromDD)">
+                <option [value]="selectDefaultValue" [disabled]="fromDD">Select unit from</option>
+                <option *ngFor="let unit of unitsFromDD" [value]="unit.code">{{unit.name}}</option>
+            </select>
               </div>
             </div>
             <div class="col-sm-12 col-md-6">
               <div class="select-to">
                 <select class="form-control" [ngModel]="toDD" (ngModelChange)="toDD = parseStringToInteger($event)">
-                  <option [value]="selectDefaultValue" [disabled]="toDD">Select unit to</option>
-                  <option *ngFor="let unit of unitsToDD" [value]="unit.code">{{unit.name}}</option>
-                </select>
-  
+                <option [value]="selectDefaultValue" [disabled]="toDD">Select unit to</option>
+                <option *ngFor="let unit of unitsToDD" [value]="unit.code">{{unit.name}}</option>
+              </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="unit-input">
+                  <form name="rn">
+                <input type="number" placeholder="type units here" id="tb" name="tb" [(ngModel)]="UnitInput" >
+                <div class="icon-reverse">
+                    <input type="button" (click)=randomNumber() aria-hidden="true" value="Random Number" [(ngModel)]="rnd" />
+                </div>
+                    </form> 
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="result">
+                <p class="text">{{ UnitInput | converterPipe:fromDD:toDD:2 }}</p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+<div>
+</div>
