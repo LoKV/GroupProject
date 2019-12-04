@@ -19,14 +19,18 @@
                   <option [value]="selectDefaultValue" [disabled]="toDD">Select unit to</option>
                   <option *ngFor="let unit of unitsToDD" [value]="unit.code">{{unit.name}}</option>
                 </select>
-                  <button class="icon-reverse" (click)="reverse()" aria-hidden="true"></button>
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12">
                 <div class="unit-input">
-                  <input type="number" [(ngModel)]="UnitInput" placeholder="type units here"> 
+                    <form name="rn">
+                  <input type="number" placeholder="type units here" id="tb" name="tb" [(ngModel)]="UnitInput" >
+                  <div class="icon-reverse">
+                      <input type="button" (click)=randomNumber() aria-hidden="true" value="Random Number" [(ngModel)]="rnd" />
+                  </div>
+                      </form> 
                 </div>
               </div>
             </div>
@@ -34,6 +38,7 @@
               <div class="col-md-12">
                 <div class="result">
                   <p class="text">{{ UnitInput | converterPipe:fromDD:toDD:2 }}</p>
+ 
                 </div>
               </div>
             </div>
@@ -44,8 +49,8 @@
   </div>
   <div>
   </div>
-
+<!-- 
   <div>
     <button (click)="randomNumber()">Random Number</button>
     <p>{{randomNumber()}}</p>
-  </div>
+  </div> -->

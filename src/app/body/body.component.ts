@@ -12,17 +12,27 @@ import { UnitEnum } from '../../converter/index';
 
 export class BodyComponent implements OnInit {
 
-
-  constructor() { }
-
   readonly selectDefaultValue = -1;
-
+  NumberRandom: number;
   UnitInput: number;
   fromDD: number;
   toDD: number;
 
   unitsFromDD: IUnit[];
   unitsToDD: IUnit[];
+  converter;
+
+  constructor() {
+   }
+
+
+  randomNumber() {
+    let rnd = (Math.ceil((Math.random() * 1000)));
+    document.getElementById('tb').value = rnd;
+    let result = Converter.convert(rnd, this.fromDD , this.toDD);
+    console.log('asdfaasd', result);
+    this.UnitInput = result;
+  }
 
   ngOnInit() {
     this.unitsFromDD = this.restoreOptions();
@@ -69,9 +79,6 @@ export class BodyComponent implements OnInit {
     return [new Yard(), new Meter(), new Inch()];
   }
 
-  randomNumber() {
-    return (Math.ceil((Math.random() * 1000)));
-  }
 
 }
 
