@@ -42,3 +42,22 @@
       </div>
     </div>
   </div>
+
+  <!-- start of table -->
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Results:</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="ConverterPipe" *ngFor="let conversion of conversionsArray; let i = index">
+        <th scope="row">{{ conversion.calcResult }}</th>
+        <th><button type="button" class="btn btn-outline-danger">Danger</button></th>
+        <th><button type="button" class="btn btn-outline-primary">Primary</button></th>
+      </tr>
+    </tbody>
+  </table>
