@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+// import { result, unitTo } from '../shared/pipes/converter.pipe';
+interface IConvert {
+  targetUnit: string;
+  calcResult: number;
+  // editMode: boolean;
+}
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +13,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  conversionsArray: Array<IConvert> = [];
+
   constructor() { }
 
   ngOnInit() {
+    this.conversionsArray = [
+      {
+        // baseUnit: 'Yards',
+        // number: 1,
+        targetUnit: 'Feet',
+        calcResult: 3,
+        // editMode: false
+      }
+    ];
   }
-
 }

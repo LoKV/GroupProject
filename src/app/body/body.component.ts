@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IUnit, Yard, Meter, Inch } from '../../converter/index';
+import { IUnit, Yard, Meter, Inch, ConverterHelper } from '../../converter/index';
+// import { converterPipe } from 'src/app/shared/pipes/converter.pipe';
+
 
 @Component({
   selector: 'app-body',
@@ -63,6 +65,15 @@ export class BodyComponent implements OnInit {
   private restoreOptions(): IUnit[] {
     return [new Yard(), new Meter(), new Inch()];
   }
+
+  // delete(index: number) {
+  //   this.conversionsArray.splice(index, 1);
+  // }
+
+  // update(index: number) {
+    
+  // }
+
 }
 
 
