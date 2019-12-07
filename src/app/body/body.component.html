@@ -1,56 +1,136 @@
 <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <main class="wrapper">
-          <h1 class="title">Unit Converter</h1>
-          <div class="box">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <div class="select-from">
-                  <select class="form-control" [ngModel]="fromDD" (ngModelChange)="fromDD = parseStringToInteger($event); updateUnitsToDropDown(fromDD)">
-                  <option [value]="selectDefaultValue" [disabled]="fromDD">Select unit from</option>
-                  <option *ngFor="let unit of unitsFromDD" [value]="unit.code">{{unit.name}}</option>
+  <div class="row">
+    <div class="col-md-12">
+      <main class="wrapper">
+        <h1 class="title">Unit Converter</h1>
+        <div class="box">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <div class="select-from">
+                <select class="form-control" [ngModel]="fromDD" (ngModelChange)="fromDD = parseStringToInteger($event); updateUnitsToDropDown(fromDD)">
+<div class="row">
+  <div class="col-md-12">
+    <main class="wrapper">
+      <h1 class="title">Unit Converter</h1>
+      <div class="box">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <div class="select-from">
+              <select class="form-control" [ngModel]="fromDD"
+                (ngModelChange)="fromDD = parseStringToInteger($event); updateUnitsToDropDown(fromDD)">
+                <option [value]="selectDefaultValue" [disabled]="fromDD">Select unit from</option>
+                <option *ngFor="let unit of unitsFromDD" [value]="unit.code">{{unit.name}}</option>
+            </select>
+              </div>
               </select>
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <div class="select-to">
-                  <select class="form-control" [ngModel]="toDD" (ngModelChange)="toDD = parseStringToInteger($event)">
-                  <option [value]="selectDefaultValue" [disabled]="toDD">Select unit to</option>
-                  <option *ngFor="let unit of unitsToDD" [value]="unit.code">{{unit.name}}</option>
-                </select>
-                </div>
-              </div>
             </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="unit-input">
-                    <form name="rn">
-                  <input type="number" placeholder="type units here" id="tb" name="tb" [(ngModel)]="UnitInput" >
-                  <div class="icon-reverse">
-                      <input type="button" (click)=randomNumber() aria-hidden="true" value="Random Number" [(ngModel)]="rnd" />
-                  </div>
-                      </form> 
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <div class="result">
-                  <p class="text">{{ UnitInput | converterPipe:fromDD:toDD:2 }}</p>
- 
-                </div>
+            <div class="col-sm-12 col-md-6">
+              <div class="select-to">
+                <select class="form-control" [ngModel]="toDD" (ngModelChange)="toDD = parseStringToInteger($event)">
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <div class="select-to">
+              <select class="form-control" [ngModel]="toDD" (ngModelChange)="toDD = parseStringToInteger($event)">
+                <option [value]="selectDefaultValue" [disabled]="toDD">Select unit to</option>
+                <option *ngFor="let unit of unitsToDD" [value]="unit.code">{{unit.name}}</option>
+              </select>
+                <button class="icon-reverse" (click)="reverse()" aria-hidden="true"></button>
               </div>
             </div>
           </div>
-        </main>
-      </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="unit-input">
+                <input type="number" [(ngModel)]="UnitInput" placeholder="type units here">
+              </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="unit-input">
+              <form name="rn">
+                <input type="number" placeholder="type units here" id="tb" name="tb" [(ngModel)]="UnitInput">
+                <!-- <div class="icon-reverse">
+                  <input type="button" (click)=randomNumber() aria-hidden="true" value="Random Number"
+                    [(ngModel)]="rnd" />
+                </div> -->
+                <!-- <div class="icon-reverse">
+                <input type="button" (click)="saveConversion()" aria-hidden="true" value="Save Conversion" [(ngModel)]="rnd" />
+                </div> -->
+              </form>
+            </div>
+            <div>
+              <button type="button" class="btn btn-danger btn-block" (click)="randomNumber()">Random Number</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="result">
+                <p class="text">{{ UnitInput | converterPipe:fromDD:toDD:2 }}</p>
+              </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="result">
+              <p class="text">{{ UnitInput | converterPipe:fromDD:toDD:2 }}</p>
+            </div>
+            <div>
+                <button type="button" class="btn btn-success btn-block"(click)="saveConversion()">Save</button>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
+      </div>
+    </main>
   </div>
-  <div>
-  </div>
+</div>
+</div>
+<div>
+</div>
 <!-- 
-  <div>
-    <button (click)="randomNumber()">Random Number</button>
-    <p>{{randomNumber()}}</p>
-  </div> -->
+<div>
+<button (click)="randomNumber()">Random Number</button>
+<p>{{randomNumber()}}</p>
+</div> -->
+
+
+<!-- start of table -->
+<!-- start of table -->
+
+<table class="table">
+<!-- <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Results:</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="ConverterPipe" *ngFor="let conversion of conversionsArray; let i = index">
+      <th scope="row">{{ conversion.calcResult }}</th>
+      <th><button type="button" class="btn btn-outline-danger">Danger</button></th>
+      <th><button type="button" class="btn btn-outline-primary">Primary</button></th>
+    </tr>
+  </tbody>
+</table> 
+</table> -->
+<table class="table">
+<thead class="thead-dark">
+  <tr>
+    <th scope="col">Results</th>
+    <th>
+      <div class="btn-group pull-right">
+      </div>
+    </th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let conversion of conversionsArray; let i = index">
+    <th scope="row">{{ conversion.calcResult }}</th>
+    <td>
+      <button type="button" class="pull-right" class="btn btn-outline-danger" (click)="deleteConversion(i)">X</button>
+    </td>
+  </tr>
+</tbody>
+</table> 
