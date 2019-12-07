@@ -23,13 +23,13 @@ export class BodyComponent implements OnInit {
   converter;
 
   constructor() {
-   }
+  }
 
 
   randomNumber() {
     let rnd = (Math.ceil((Math.random() * 1000)));
-    document.getElementById('tb').value = rnd;
-    let result = Converter.convert(rnd, this.fromDD , this.toDD);
+    let inputValue = (document.getElementById('tb') as HTMLInputElement).value;
+    let result = Converter.convert(rnd, this.fromDD, this.toDD);
     console.log('asdfaasd', result);
     this.UnitInput = result;
   }
@@ -91,8 +91,6 @@ export class BodyComponent implements OnInit {
 
 
 
- //functionRandom() {
-    //return (Converter.convert(this.randomNumber() , UnitEnum.Yard , UnitEnum.Inch));}
 
 
 
