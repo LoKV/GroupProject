@@ -22,7 +22,6 @@ export class ConverterPipe implements PipeTransform {
             });
             console.log(this.conversionsArray);
             return `${ConverterHelper.round(result, decimals)} ${unitTo.friendlyName}`;
-            
         }
         return '';
     }

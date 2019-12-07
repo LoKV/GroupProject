@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IUnit, Yard, Meter, Inch } from '../../converter/index';
-// import { Converter } from '../../converter/converter';
 import { Converter, ConverterHelper, UnitFactory, UnitEnum } from '../../converter/index';
-
-// import { UnitEnum } from '../../converter/index';
 
 interface IConvert {
   calcResult: any;
@@ -70,13 +67,11 @@ export class BodyComponent implements OnInit {
       calcResult: `${ConverterHelper.round(result, decimals)}`
     });
 
-    // Saving in local storage
     localStorage.setItem('conversionsArray', JSON.stringify(this.conversionsArray));
   }
 
   deleteConversion(index: number) {
     this.conversionsArray.splice(index, 1);
-    // Deleting from local storage
     localStorage.setItem('conversionsArray', JSON.stringify(this.conversionsArray));
   }
 
