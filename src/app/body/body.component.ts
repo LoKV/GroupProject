@@ -21,11 +21,14 @@ export class BodyComponent implements OnInit {
   constructor() { }
 
   readonly selectDefaultValue = -1;
+
   UnitInput: number;
   fromDD: number;
   toDD: number;
+
   unitsFromDD: IUnit[];
   unitsToDD: IUnit[];
+
   ngOnInit() {
     this.unitsFromDD = this.restoreOptions();
     this.unitsToDD = this.restoreOptions();
@@ -41,6 +44,7 @@ export class BodyComponent implements OnInit {
     this.restoreOptionSelectIfSelected(selectedCode);
     this.removeOptionSelect(index);
   }
+
   reverse() {
     if (this.fromDD >= 0 && this.toDD >= 0) {
       const from = this.fromDD;
@@ -53,7 +57,7 @@ export class BodyComponent implements OnInit {
 
   randomNumber() {
     let rnd = (Math.ceil((Math.random() * 1000)));
-    let inputValue = (document.getElementById('tb') as HTMLInputElement).value;
+    // document.getElementById('tb').value = rnd;
     let result = Converter.convert(rnd, this.fromDD, this.toDD);
     console.log('asdfaasd', result);
     this.UnitInput = result;
@@ -79,18 +83,26 @@ export class BodyComponent implements OnInit {
   parseStringToInteger(value: string): number {
     return parseInt(value[0], 10);
   }
+
   private restoreOptionSelectIfSelected(selectedCode: number): void {
     if (this.toDD === selectedCode) {
       this.toDD = this.selectDefaultValue;
     }
   }
+
   private restoreToUnitSelect() {
     this.unitsToDD = this.restoreOptions();
   }
+
   private removeOptionSelect(index: number): void {
     this.unitsToDD.splice(index, 1);
   }
+
   private restoreOptions(): IUnit[] {
     return [new Yard(), new Meter(), new Inch()];
   }
 }
+
+
+
+
