@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { IUnit, Yard, Meter, Inch } from '../../converter/index';
+// import { Converter } from '../../converter/converter';
+import { Converter, ConverterHelper, UnitFactory, UnitEnum } from '../../converter/index';
+
+// import { UnitEnum } from '../../converter/index';
+
+interface IConvert {
+  calcResult: any;
+}
 
 @Component({
   selector: 'app-body',
@@ -7,6 +15,8 @@ import { IUnit, Yard, Meter, Inch } from '../../converter/index';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
+
+  conversionsArray: Array<IConvert> = [];
 
   constructor() { }
 
@@ -24,6 +34,9 @@ export class BodyComponent implements OnInit {
     this.unitsToDD = this.restoreOptions();
     this.fromDD = this.selectDefaultValue;
     this.toDD = this.selectDefaultValue;
+    let conversions = JSON.parse(localStorage.getItem('conversionsArray'));
+    this.conversionsArray = conversions;
+    return conversions;
   }
   updateUnitsToDropDown(selectedCode: number): void {
     this.unitsToDD = this.restoreOptions();
@@ -40,6 +53,31 @@ export class BodyComponent implements OnInit {
       this.fromDD = to;
       this.toDD = from;
     }
+  }
+
+  randomNumber() {
+    let rnd = (Math.ceil((Math.random() * 1000)));
+    // document.getElementById('tb').value = rnd;
+    let result = Converter.convert(rnd, this.fromDD, this.toDD);
+    console.log('asdfaasd', result);
+    this.UnitInput = result;
+  }
+
+  saveConversion() {
+    const decimals = 2;
+    const result = Converter.convert(this.UnitInput, this.fromDD, this.toDD);
+    this.conversionsArray.unshift({
+      calcResult: `${ConverterHelper.round(result, decimals)}`
+    });
+
+    // Saving in local storage
+    localStorage.setItem('conversionsArray', JSON.stringify(this.conversionsArray));
+  }
+
+  deleteConversion(index: number) {
+    this.conversionsArray.splice(index, 1);
+    // Deleting from local storage
+    localStorage.setItem('conversionsArray', JSON.stringify(this.conversionsArray));
   }
 
   parseStringToInteger(value: string): number {
