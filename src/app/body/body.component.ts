@@ -30,7 +30,6 @@ export class BodyComponent implements OnInit {
     let rnd = (Math.ceil((Math.random() * 1000)));
     let inputValue = (document.getElementById('tb') as HTMLInputElement).value;
     let result = Converter.convert(rnd, this.fromDD, this.toDD);
-    console.log('asdfaasd', result);
     this.UnitInput = result;
   }
 
