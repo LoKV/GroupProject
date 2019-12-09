@@ -11,7 +11,7 @@
 }
  .wrapper .box {
 	 padding: 50px;
-	 background-color: rgb(142, 140, 240);
+	 background-color: rgb(135, 8, 219);
 	 border-radius: 5px;
 }
  .wrapper select {
@@ -29,20 +29,6 @@
 	 display: flex;
 	 flex-direction: row;
 	 align-items: center;
-}
- .wrapper .icon-reverse {
-	 display: inline-flex;
-	 margin-left: 35px;
-	 background-color: red;
-	 padding: 10px;
-	 border-radius: 50px;
-	 cursor: pointer;
-	 transform: scale(0.9);
-	 transition: transform 0.15s ease-out;
-}
- .wrapper .icon-reverse:hover {
-	 transform: scale(1.1);
-	 transition: transform 0.15s ease-in;
 }
  .wrapper .unit-input {
 	 display: flex;
@@ -91,4 +77,3 @@
 		 margin-top: 100px;
 	}
 }
- 
