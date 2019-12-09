@@ -26,12 +26,14 @@ export class BodyComponent implements OnInit {
   unitsFromDD: IUnit[];
   unitsToDD: IUnit[];
 
+  conversionArray: IConvert[];
+
   ngOnInit() {
     this.unitsFromDD = this.restoreOptions();
     this.unitsToDD = this.restoreOptions();
     this.fromDD = this.selectDefaultValue;
     this.toDD = this.selectDefaultValue;
-    let conversions = JSON.parse(localStorage.getItem('conversionsArray'));
+    const conversions = JSON.parse(localStorage.getItem('conversionsArray'));
     this.conversionsArray = conversions;
     return conversions;
   }
@@ -42,20 +44,10 @@ export class BodyComponent implements OnInit {
     this.removeOptionSelect(index);
   }
 
-  reverse() {
-    if (this.fromDD >= 0 && this.toDD >= 0) {
-      const from = this.fromDD;
-      const to = this.toDD;
-      this.restoreToUnitSelect();
-      this.fromDD = to;
-      this.toDD = from;
-    }
-  }
-
   randomNumber() {
-    let rnd = (Math.ceil((Math.random() * 1000)));
-    let inputValue = (document.getElementById('tb') as HTMLInputElement).value;
-    let result = Converter.convert(rnd, this.fromDD, this.toDD);
+    const rnd = (Math.ceil((Math.random() * 1000)));
+    const inputValue = (document.getElementById('tb') as unknown as HTMLInputElement).value;
+    const result = Converter.convert(rnd, this.fromDD, this.toDD);
     console.log('asdfaasd', result);
     this.UnitInput = result;
   }
@@ -63,9 +55,9 @@ export class BodyComponent implements OnInit {
   saveConversion() {
     const decimals = 2;
     const result = Converter.convert(this.UnitInput, this.fromDD, this.toDD);
-    this.conversionsArray.unshift({
+    this.conversionsArray.unshift(({
       calcResult: `${ConverterHelper.round(result, decimals)}`
-    });
+    }));
 
     localStorage.setItem('conversionsArray', JSON.stringify(this.conversionsArray));
   }
