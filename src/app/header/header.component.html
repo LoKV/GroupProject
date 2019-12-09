@@ -1,1 +1,20 @@
-<p>header works!</p>
+<div class="modal" id="myModal"[ngClass]="{'show':showModal}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          This application was created by Victor Lo, Octavio Campos Yepez, Brian Moreno and Michael GilletteBerg (c). 2019
+        </div>
+  
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="showModal =false" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-primary" (click)='showModal=true' data-toggle="modal" data-target="#myModal">
+    About
+  </button>
